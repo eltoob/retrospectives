@@ -4,11 +4,13 @@ source "https://rubygems.org"
 gem "rails"
 gem 'sqlite3'
 gem 'slim'
+gem 'simple_form'
 
 group :test do
   gem "rspec-rails"
   gem 'activerecord-nulldb-adapter'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :assets do
