@@ -5,6 +5,7 @@ gem "rails"
 gem 'sqlite3'
 gem 'slim'
 gem 'simple_form'
+gem 'twitter-bootstrap-rails'
 
 group :test do
   gem "rspec-rails"
