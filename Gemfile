@@ -2,16 +2,19 @@
 source "https://rubygems.org"
 
 gem "rails"
-gem 'sqlite3'
+gem 'pg'
 gem 'slim'
 gem 'simple_form'
 gem 'twitter-bootstrap-rails'
+gem 'heroku'
+gem 'jquery-rails'
 
 group :test do
   gem "rspec-rails"
   gem 'activerecord-nulldb-adapter'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'sqlite3'
 end
 
 group :assets do
@@ -19,6 +22,3 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
-
