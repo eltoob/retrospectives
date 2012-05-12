@@ -2,7 +2,13 @@
   #happy
     h1= ":)"
     .items
-      = add_happy
+      = simple_form_for(Item.build_happy) do |form|
+        = form.input :category, as: 'hidden'
+        = form.submit "Add"
+
+      - current_retro.items.each do |item|
+        = simple_form_for(item, html: {'data-behavior' => 'AjaxForm'}) do |form|
+          = form.input :description
 
   #meh
     h1= ": |"

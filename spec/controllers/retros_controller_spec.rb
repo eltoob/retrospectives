@@ -13,5 +13,10 @@ describe RetrosController do
       post :create, retro: parameters
       response.should redirect_to(retro_path(retro))
     end
+
+    it "sets the current retrospective" do
+      post :create, retro: parameters
+      @controller.current_retro.should == retro
+    end
   end
 end

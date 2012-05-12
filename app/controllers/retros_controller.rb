@@ -1,6 +1,6 @@
 class RetrosController < ApplicationController
   def create
-    retro = Retro.create(params[:retro])
-    redirect_to retro_path(retro)
+    self.current_retro = Retro.create(params[:retro])
+    redirect_to retro_path(current_retro)
   end
 end

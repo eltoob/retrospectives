@@ -41,7 +41,7 @@ module Helpers
 
   def should_still_see_happy_item
     within_happy do
-      page.should have_content(happy_item_text)
+      page.should have_field("Description", text: happy_item_text)
     end
   end
 end
