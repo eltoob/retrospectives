@@ -17,6 +17,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'sqlite3'
+  gem "schubert-remarkable_activerecord", "~> 4.0.0.alpha4"
 end
 
 group :assets do
