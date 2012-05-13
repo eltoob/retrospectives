@@ -19,4 +19,19 @@ describe RetrosController do
       @controller.current_retro.should == retro
     end
   end
+
+  describe "#update" do
+    let(:retro) { stub_model(Retro) }
+    let(:parameters) { Hash.new }
+
+    before do
+      @controller.current_retro = retro
+      retro.should_receive(:update_attributes).with(parameters) { true }
+    end
+
+    it "returns successfully" do
+      post :update, id: retro.id, retro: parameters
+      response.should be_success
+    end
+  end
 end

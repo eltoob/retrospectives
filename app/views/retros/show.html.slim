@@ -1,5 +1,6 @@
 #timer
-  .clock(data-behavior="Timer")
+  .clock(data-behavior="Timer" data-seconds-left="#{current_retro.seconds_left}" data-retros-path="#{retro_path(current_retro)}")
+
 #workspace(data-behavior='Workspace Keybindings')
   #happy.swimming-lane
     h1= ":)"
