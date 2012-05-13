@@ -8,8 +8,9 @@ describe Retro do
       Item.should_receive(:create).with(attrs) { item }
 
       retro = Retro.new
-      retro.create_item(attrs)
+      new_item = retro.create_item(attrs)
       retro.items.should include(item)
+      new_item.should == item
     end
   end
 end

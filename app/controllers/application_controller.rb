@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_retro
 
+  after_filter do
+    logger.warn "SessionID :: #{session['session_id']}"
+  end
+
   def current_retro
     @current_retro ||= Retro.find_by_id(session[:current_retro_id])
   end

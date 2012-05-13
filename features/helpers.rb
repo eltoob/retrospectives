@@ -1,3 +1,5 @@
+require 'pry'
+
 module Helpers
   def visit_home_page
     visit "/"
@@ -26,6 +28,10 @@ module Helpers
   end
 
   def fill_in_happy_item
+    wait_until do
+      page.has_field?("Description")
+    end
+
     within_happy do
       fill_in "Description", with: happy_item_text
     end

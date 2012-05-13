@@ -6,5 +6,6 @@ class Retro < ActiveRecord::Base
     item.retro_id = self.id
     item.save
     self.items.push(item)
+    item
   end
 end

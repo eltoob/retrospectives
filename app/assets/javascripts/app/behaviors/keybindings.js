@@ -1,13 +1,12 @@
-Retrospective.Behaviors.Keybindings = function(container){
+Retrospective.Behaviors.Keybindings = function(item){
   var ENTER = 13;
 
-  container.find(".retro-item").each(function(){
-    var el = $(this);
-    el.keyup(function(event){
-      if(event.which == ENTER){
-        var submit = el.closest(".swimming-lane").find(".add-new-item");
+  item.keyup(function(event){
+    if(event.which == ENTER){
+      if(item.val().replace(/ /, '').length !== 0){
+        var submit = item.closest(".swimming-lane").find(".add-new-item");
         submit.click();
       }
-    });
+    }
   });
 };
