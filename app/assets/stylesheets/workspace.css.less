@@ -1,28 +1,23 @@
 #workspace {
-  width: 970px;
-  margin: 20px 0;
-  float: left;
+}
+
+#timer {
+  margin: 0 0 20px 0;
 }
 
 #timer .clock {
   background: #ccc;
   float: left;
-  width: 970px;
-  border: 2px solid #000;
 }
 
 #workspace > div {
-  width: 310px;
-  margin-right: 20px;
   background: #ccc;
-  height: 400px;
-  float: left;
+  padding-bottom: 20px;
 
   h1 {
     background-color: #000;
     color: #fff;
     text-align: center;
-    padding: 10px;
   }
 
   form {
@@ -30,24 +25,24 @@
   }
 
   form input[type=submit] {
-    width: 310px;
     background-color: #666;
     color: #fff;
+    display: block;
     margin: 0;
   }
 
   form input[type=text] {
-    width: 280px;
-    margin: 0;
     border: 1px solid #888;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 5px 7px;
   }
 
   form .remove-item {
-    width: 10px;
-    margin: 0;
-    padding: 5px;
     display: block;
     float: right;
+    line-height: 28px;
   }
 
   form label {
@@ -56,5 +51,4 @@
 }
 
 #workspace > div.last {
-  margin-right: 0px !important;
 }

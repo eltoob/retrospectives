@@ -4,7 +4,12 @@ Retrospective.Behaviors.RemoveItem = function(link) {
       link.closest("form").remove();
     };
 
-    $.post(link.attr("href"), {_method: 'delete', success: remove});
+    $.ajax({
+      url: link.attr("href"),
+      type: "POST",
+      data: {_method: 'delete'},
+      success: remove
+    });
 
     return false;
   });

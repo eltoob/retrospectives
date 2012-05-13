@@ -1,8 +1,8 @@
-#timer
-  .clock(data-behavior="Timer" data-seconds-left="#{current_retro.seconds_left}" data-retros-path="#{retro_path(current_retro)}")
+#timer.row-fluid
+  .clock.span12(data-behavior="Timer" data-seconds-left="#{current_retro.seconds_left}" data-retros-path="#{retro_path(current_retro)}")
 
-#workspace(data-behavior='Workspace Keybindings')
-  #happy.swimming-lane
+#workspace.row-fluid(data-behavior='Workspace Keybindings')
+  #happy.swimming-lane.span4
     h1= ":)"
     .items
       = render 'items/add', item: Item.build_happy
@@ -10,7 +10,7 @@
       - current_retro.happy_items.each do |item|
         = render 'items/item', item: item
 
-  #meh.swimming-lane
+  #meh.swimming-lane.span4
     h1= ": |"
     .items
       = render 'items/add', item: Item.build_meh
@@ -18,7 +18,7 @@
       - current_retro.meh_items.each do |item|
         = render 'items/item', item: item
 
-  #bad.last.swimming-lane
+  #bad.last.swimming-lane.span4.last
     h1= ":("
     .items
       = render 'items/add', item: Item.build_sad

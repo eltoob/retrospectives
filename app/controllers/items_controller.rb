@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
   def destroy
     item = current_retro.find_item_by_id(params[:id].to_i)
-    item.destroy
+    item.destroy if item
     render :json => {}
   end
 end

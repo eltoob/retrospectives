@@ -18,19 +18,18 @@ html lang="en"
   body
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
+        .container-fluid
           a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
             span.icon-bar
             span.icon-bar
             span.icon-bar
           a.brand href="#"Retrospective
 
-    .container
-      .content
-        .row
-          .span12
-            = yield
-
+    .container-fluid
+      .row-fluid
+        .span12
+          = yield
+    
       footer
         p
     /!
