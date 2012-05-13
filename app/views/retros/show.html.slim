@@ -4,17 +4,23 @@
   #happy.swimming-lane
     h1= ":)"
     .items
-      = simple_form_for(Item.build_happy) do |form|
-        = form.input :category, as: 'hidden'
-        = form.submit "Add", class: 'add-new-item', 'data-behavior' => 'AddNewItem'
+      = render 'items/add', item: Item.build_happy
 
-      - current_retro.items.each do |item|
+      - current_retro.happy_items.each do |item|
         = render 'items/item', item: item
 
   #meh.swimming-lane
     h1= ": |"
     .items
+      = render 'items/add', item: Item.build_meh
+
+      - current_retro.meh_items.each do |item|
+        = render 'items/item', item: item
 
   #bad.last.swimming-lane
     h1= ":("
     .items
+      = render 'items/add', item: Item.build_sad
+
+      - current_retro.sad_items.each do |item|
+        = render 'items/item', item: item
