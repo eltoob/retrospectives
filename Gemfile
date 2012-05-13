@@ -16,7 +16,6 @@ group :test do
   gem 'activerecord-nulldb-adapter'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'sqlite3'
   gem "remarkable_activerecord", "~> 4.0.0.alpha4"
   gem 'pry'
 end
