@@ -1,21 +1,21 @@
 #timer
   .clock(data-behavior="Timer")
-#workspace(data-behavior='Workspace')
-  #happy
+#workspace(data-behavior='Workspace Keybindings')
+  #happy.swimming-lane
     h1= ":)"
     .items
       = simple_form_for(Item.build_happy) do |form|
         = form.input :category, as: 'hidden'
-        = form.submit "Add"
+        = form.submit "Add", class: 'add-new-item'
 
       - current_retro.items.each do |item|
         = simple_form_for(item, html: {'data-behavior' => 'AjaxForm'}) do |form|
-          = form.input :description
+          = form.input :description, class: 'retro-item'
 
-  #meh
+  #meh.swimming-lane
     h1= ": |"
     .items
 
-  #bad.last
+  #bad.last.swimming-lane
     h1= ":("
     .items
