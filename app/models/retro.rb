@@ -11,4 +11,10 @@ class Retro < ActiveRecord::Base
     self.items.push(item)
     item
   end
+
+  def find_item_by_id(item_id)
+    items.detect do |item|
+      item.id == item_id.to_i
+    end
+  end
 end

@@ -5,9 +5,14 @@ class ItemsController < ApplicationController
   end
 
   def update
-    current_retro.items.detect do |item|
-      item.id.to_s == params[:id]
-    end.update_attributes(params[:item])
+    item = current_retro.find_item_by_id(params[:id].to_i)
+    item.update_attributes(params[:item])
     head :ok
+  end
+
+  def destroy
+    item = current_retro.find_item_by_id(params[:id].to_i)
+    item.destroy
+    render :json => {}
   end
 end

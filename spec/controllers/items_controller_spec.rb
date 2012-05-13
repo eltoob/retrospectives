@@ -13,7 +13,7 @@ describe ItemsController do
 
     it "re-renders the retros page" do
       post :create, item: parameters
-      response.should redirect_to(retro_path(retro))
+      response.should render_template("item")
     end
   end
 
@@ -30,6 +30,22 @@ describe ItemsController do
     it "updates a given item" do
       item.should_receive(:update_attributes).with(parameters) { true }
       post :update, id: item.id, item: parameters
+    end
+  end
+
+  describe "#destroy" do
+    let(:retro) { stub_model(Retro) }
+    let(:item) { stub_model(Item) }
+
+    before do
+      @controller.current_retro = retro
+      retro.should_receive(:find_item_by_id).with(item.id) { item }
+      item.should_receive(:destroy)
+    end
+
+    it "removes a current retro's item" do
+      post :destroy, id: item.id
+      response.body.should == {}.to_json
     end
   end
 end
