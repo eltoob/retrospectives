@@ -23,7 +23,11 @@ html lang="en"
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.brand href="#"Retrospective
+          - if current_retro
+            .btn-group.pull-right
+              = link_to "Current Retro", retro_path(current_retro), class: 'btn dropdown-toggle'
+
+          a.brand href="/" Retrospective
 
     .container-fluid
       .row-fluid

@@ -1,4 +1,10 @@
 
-= simple_form_for(Retro.new) do |form|
-  = form.submit "Start"
+.hero-unit
+  h1 Team Retrospective
+
+  p
+    | Track your team's ability to respond to retrospection over time.
+
+  = simple_form_for(Retro.new) do |form|
+    = form.submit raw("Start &rarr;"), class: 'btn btn-primary btn-large'
 
