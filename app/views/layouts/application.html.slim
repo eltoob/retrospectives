@@ -19,10 +19,6 @@ html lang="en"
     .navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid
-          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
           - if current_retro
             .btn-group.pull-right
               = link_to "Current Retro", retro_path(current_retro), class: 'btn dropdown-toggle'
@@ -33,7 +29,7 @@ html lang="en"
       .row-fluid
         .span12
           = yield
-    
+
       footer
         p
     /!
