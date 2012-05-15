@@ -10,6 +10,7 @@ gem 'simple_form'
 gem 'twitter-bootstrap-rails'
 gem 'heroku'
 gem 'jquery-rails'
+gem 'newrelic_rpm'
 
 group :test do
   gem "rspec-rails"
