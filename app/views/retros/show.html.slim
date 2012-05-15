@@ -1,5 +1,6 @@
 #timer.row-fluid
   .clock.span12(data-behavior="Timer" data-seconds-left="#{current_retro.seconds_left}" data-retros-path="#{retro_path(current_retro)}")
+h1.page-header Retro for #{current_retro.created_at.strftime("%d/%m/%Y")}
 
 #workspace.row-fluid(data-behavior='Workspace Keybindings')
   #happy.swimming-lane.span4

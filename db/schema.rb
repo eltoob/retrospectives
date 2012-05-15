@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513195143) do
+ActiveRecord::Schema.define(:version => 20120515023351) do
 
   create_table "items", :force => true do |t|
     t.string  "description"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(:version => 20120513195143) do
   end
 
   create_table "retros", :force => true do |t|
-    t.integer "seconds_left"
+    t.integer  "seconds_left"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
