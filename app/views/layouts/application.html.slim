@@ -26,7 +26,13 @@ html lang="en"
           a.brand href="/" Retrospective
           .container-fluid.nav-collapse
             ul.nav
-              li= link_to "Home", root_path
+              - if request.fullpath == root_path
+                li(class='active')
+                  = link_to "Home", root_path
+              - else
+                li
+                  = link_to "Home", root_path
+
               - if current_retro.present?
                 - if on_current_retro_page?
                   li(class='active')
