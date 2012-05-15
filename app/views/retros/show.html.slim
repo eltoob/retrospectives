@@ -3,25 +3,43 @@
 
 #workspace.row-fluid(data-behavior='Workspace Keybindings')
   #happy.swimming-lane.span4
-    h1= ":)"
-    .items
-      = render 'items/add', item: Item.build_happy
+    ul.nav.nav-tabs
+      li.active= link_to("Happy Items", "#")
+      li= link_to("Action Items", "#", 'data-behavior' => 'ShowActionItems')
+      li.pull-right
+        = render 'items/add', item: Item.build_happy
 
+    .items
       - current_retro.happy_items.each do |item|
         = render 'items/item', item: item
 
   #meh.swimming-lane.span4
-    h1= ": |"
-    .items
-      = render 'items/add', item: Item.build_meh
+    ul.nav.nav-tabs
+      li.active= link_to("Wat? Huh?", "#")
+      li.pull-right
+        = render 'items/add', item: Item.build_meh
 
+    .items
       - current_retro.meh_items.each do |item|
         = render 'items/item', item: item
 
   #bad.last.swimming-lane.span4.last
-    h1= ":("
-    .items
-      = render 'items/add', item: Item.build_sad
+    ul.nav.nav-tabs
+      li.active= link_to("Sad Items", "#")
+      li.pull-right
+        = render 'items/add', item: Item.build_sad
 
+    .items
       - current_retro.sad_items.each do |item|
+        = render 'items/item', item: item
+
+  #action_items.swimming-lane.span4.hide
+    ul.nav.nav-tabs
+      li= link_to("Happy Items", "#", 'data-behavior' => "ShowHappyItems")
+      li.active= link_to("Action Items", "#")
+      li.pull-right
+        = render 'items/add', item: Item.build_action
+
+    .items
+      - current_retro.action_items.each do |item|
         = render 'items/item', item: item

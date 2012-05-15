@@ -2,28 +2,25 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara'
+require 'capybara/rspec'
+require 'database_cleaner'
+require File.dirname(__FILE__) + '/helpers'
 
 RSpec.configure do |config|
-  config.treat_symbols_as_metadata_keys_with_true_values = true
-  config.run_all_when_everything_filtered = true
-  config.filter_run :focus
+  config.use_transactional_fixtures = false
 
-  require 'capybara'
-  require 'capybara/rspec'
-  require File.dirname(__FILE__) + '/../config/environment'
   Capybara.app = Retrospective::Application
   Capybara.current_driver = :selenium
-  require File.dirname(__FILE__) + '/helpers'
-  require 'database_cleaner'
+  Capybara.default_wait_time = 10
 
   RSpec.configure do |config|
     config.before(:suite) do
-      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.strategy = :truncation
     end
 
     config.before do
       Capybara.reset_sessions!
-      DatabaseCleaner.clean_with(:truncation)
       DatabaseCleaner.start
     end
 

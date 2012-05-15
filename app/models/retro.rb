@@ -5,6 +5,7 @@ class Retro < ActiveRecord::Base
   has_many :happy_items, conditions: { :category => Item::HAPPY }, class_name: 'Item'
   has_many :meh_items, conditions: { :category => Item::MEH }, class_name: 'Item'
   has_many :sad_items, conditions: { :category => Item::SAD }, class_name: 'Item'
+  has_many :action_items, conditions: { :category => Item::ACTION }, class_name: 'Item'
 
   attr_accessible :seconds_left
 
