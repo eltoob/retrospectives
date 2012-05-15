@@ -20,6 +20,9 @@ html lang="en"
       .navbar-inner
         .container-fluid
           - if current_retro
+            #timer.pull-right
+              .clock.span3(data-behavior="Timer" data-seconds-left="#{current_retro.seconds_left}" data-retros-path="#{retro_path(current_retro)}")
+
             .btn-group.pull-right
               = link_to "Current Retro", retro_path(current_retro), class: 'btn dropdown-toggle'
 
