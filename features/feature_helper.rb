@@ -1,3 +1,8 @@
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+require 'rspec/rails'
+require 'rspec/autorun'
+
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
@@ -14,14 +19,15 @@ RSpec.configure do |config|
   RSpec.configure do |config|
     config.before(:suite) do
       DatabaseCleaner.strategy = :transaction
-      DatabaseCleaner.clean_with(:truncation)
     end
 
-    config.before(:each) do
+    config.before do
+      Capybara.reset_sessions!
+      DatabaseCleaner.clean_with(:truncation)
       DatabaseCleaner.start
     end
 
-    config.after(:each) do
+    config.after do
       DatabaseCleaner.clean
     end
   end
