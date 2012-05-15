@@ -40,11 +40,31 @@ html lang="en"
                 -else 
                   li
                     = link_to "Current Retro", retro_path(current_retro)
+              - if user_signed_in?
+                - if request.fullpath == dashboard_users_path
+                  li.active= link_to("Dashboard", dashboard_users_path)
+                - else
+                  li= link_to("Dashboard", dashboard_users_path)
+
+              - if user_signed_in?
+                li= link_to('Sign out', destroy_user_session_path, :method => :delete)
+              - else
+                li= link_to("Sign in", new_user_session_path)
 
 
     .container-fluid
       .row-fluid
         .span12
+          - if notice.present?
+            p(class="notice")
+              = notice
+          - if alert.present?
+            p(class="alert")
+              = alert
+
+      .row-fluid
+        .span12
+
           = yield
 
       footer
@@ -54,3 +74,4 @@ html lang="en"
       \==================================================
     /! Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
+

@@ -1,6 +1,27 @@
 class RetrosController < ApplicationController
+  before_filter do
+    retro = Retro.find_by_id(params[:id])
+
+    if retro && retro.user
+      if user_signed_in? && current_user != retro.user
+        redirect_to root_path
+      end
+
+      unless user_signed_in?
+        redirect_to root_path
+      end
+    end
+
+    self.current_retro = retro
+  end
+
   def create
-    self.current_retro = Retro.create(params[:retro])
+    retro = Retro.new(params[:retro])
+    retro.user = current_user if user_signed_in?
+    retro.save
+
+    self.current_retro = retro
+
     redirect_to retro_path(current_retro)
   end
 

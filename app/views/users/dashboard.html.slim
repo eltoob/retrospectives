@@ -1,0 +1,8 @@
+.hero-unit
+  h2 Previous Retrospectives
+
+  ul
+    - current_user.retros.each do |retro|
+      li= link_to retro.created_at.strftime("%b %e, %Y"), retro_path(retro)
+
+= button_to raw("Start a new retrospective &rarr;"), retros_path, class: 'btn, btn-primary btn-large'

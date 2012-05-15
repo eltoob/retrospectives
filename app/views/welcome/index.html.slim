@@ -6,5 +6,9 @@
     | Track your team's ability to respond to retrospection over time.
 
   = simple_form_for(Retro.new) do |form|
-    = form.submit raw("Start &rarr;"), class: 'btn btn-primary btn-large'
+    .span1
+      = form.submit raw("Start &rarr;"), class: 'btn btn-large'
+    p.span1(style='text-align: center') or
+    .span2
+      = link_to "Sign up", new_user_registration_path, class: 'btn btn-large btn-primary'
 

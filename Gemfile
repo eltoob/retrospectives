@@ -11,6 +11,7 @@ gem 'twitter-bootstrap-rails'
 gem 'heroku'
 gem 'jquery-rails'
 gem 'newrelic_rpm'
+gem 'devise'
 
 group :test do
   gem "rspec-rails"

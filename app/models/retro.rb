@@ -6,6 +6,7 @@ class Retro < ActiveRecord::Base
   has_many :meh_items, conditions: { :category => Item::MEH }, class_name: 'Item'
   has_many :sad_items, conditions: { :category => Item::SAD }, class_name: 'Item'
   has_many :action_items, conditions: { :category => Item::ACTION }, class_name: 'Item'
+  belongs_to :user
 
   attr_accessible :seconds_left
 
