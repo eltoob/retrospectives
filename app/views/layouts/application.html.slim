@@ -53,14 +53,15 @@ html lang="en"
 
 
     .container-fluid
-      .row-fluid
-        .span12
-          - if notice.present?
-            p(class="notice")
-              = notice
-          - if alert.present?
-            p(class="alert")
-              = alert
+      - if notice.present? || alert.present?
+        .row-fluid
+          .span12
+            - if notice.present?
+              p(class="notice")
+                = notice
+            - if alert.present?
+              p(class="alert")
+                = alert
 
       .row-fluid
         .span12
