@@ -1,14 +1,18 @@
 class RetrosController < ApplicationController
   before_filter do
+    return unless params[:id]
+
     retro = Retro.find_by_id(params[:id])
 
     if retro && retro.user
       if user_signed_in? && current_user != retro.user
-        redirect_to root_path
+        flash[:alert] = "That's not your retro."
+        redirect_to root_path and return
       end
 
       unless user_signed_in?
-        redirect_to root_path
+        flash[:alert] = "That's not your retro."
+        redirect_to root_path and return
       end
     end
 
