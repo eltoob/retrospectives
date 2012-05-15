@@ -8,5 +8,7 @@ Retrospective.Behaviors.ShowHappyItems = function(el){
 
     actionItems.insertAfter($("#bad"));
     happy.insertBefore($("#meh"));
+
+    happy.find(".retro-item").focus();
   });
 };
