@@ -12,6 +12,7 @@ gem 'heroku'
 gem 'jquery-rails'
 gem 'newrelic_rpm'
 gem 'devise'
+gem 'pivotal-tracker'
 
 group :test do
   gem "rspec-rails"

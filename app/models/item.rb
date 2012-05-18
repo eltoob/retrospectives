@@ -29,4 +29,16 @@ class Item < ActiveRecord::Base
       item.category = ACTION
     end
   end
+
+  def send_to_tracker(api_token, project_id)
+    PivotalTracker::Client.token = api_token
+    project = PivotalTracker::Project.find(project_id)
+
+    story ||= project.stories.create(name: description, story_type: 'chore')
+    story = if story
+    else
+      self.pivotal_tracker_story_id = story.id
+      self.save!
+    end
+  end
 end

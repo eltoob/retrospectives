@@ -40,4 +40,12 @@ class RetrosController < ApplicationController
     current_retro.update_attributes(params[:retro])
     head :ok
   end
+
+  def send_to_tracker
+    current_retro.unassigned_action_items.each do |action_item|
+      action_item.send_to_tracker(current_user.pivotal_tracker_api_key, current_user.pivotal_tracker_project_id)
+    end
+
+    head :ok
+  end
 end

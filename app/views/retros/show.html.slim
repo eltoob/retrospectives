@@ -40,3 +40,8 @@
     .items
       - current_retro.action_items.each do |item|
         = render 'items/item', item: item
+
+    - if current_user.can_submit_to_pivotal_tracker?
+      = simple_form_for(current_retro, url: send_to_tracker_retro_path(current_retro), html: {'data-behavior' => 'AjaxForm'}) do |form|
+        = form.submit "Send to Pivotal Tracker"
+

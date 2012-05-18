@@ -6,3 +6,10 @@
       li= link_to retro.created_at.strftime("%b %e, %Y"), retro_path(retro)
 
 = button_to raw("Start a new retrospective &rarr;"), retros_path, class: 'btn, btn-primary btn-large'
+
+.hero-unit
+  h2 Pivotal Tracker Integration
+  = simple_form_for(current_user) do |form|
+    = form.input :pivotal_tracker_api_key
+    = form.input :pivotal_tracker_project_id, label: 'Pivotal tracker project id'
+    = form.submit "Save"
