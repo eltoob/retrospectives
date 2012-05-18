@@ -12,4 +12,4 @@
   = simple_form_for(current_user) do |form|
     = form.input :pivotal_tracker_api_key
     = form.input :pivotal_tracker_project_id, label: 'Pivotal tracker project id'
-    = form.submit "Save"
+    = form.submit "Save", class: 'btn'
