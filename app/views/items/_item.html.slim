@@ -1,6 +1,7 @@
 = simple_form_for(item, html: {'data-behavior' => 'AjaxForm', class: 'retro-item-form row-fluid'}) do |form|
   i(class='icon-resize-vertical span1')
   = form.input(:description, input_html: { autofocus: autofocus?, 'data-behavior' => "Keybindings",  class: 'retro-item span12', autocomplete: 'off'}, wrapper_html: {class: 'span10'})
-  = link_to(item_path(item), class: 'remove-item', 'data-behavior' => 'RemoveItem') do
-    i(class='icon-remove')
+  - if current_retro.has_time_left?
+    = link_to(item_path(item), class: 'remove-item', 'data-behavior' => 'RemoveItem') do
+      i(class='icon-remove')
 

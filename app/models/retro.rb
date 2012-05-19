@@ -38,4 +38,8 @@ class Retro < ActiveRecord::Base
   def over_half_time?
     (SECONDS_IN_ONE_HOUR / 2) < seconds_left
   end
+
+  def has_time_left?
+    seconds_left > 0
+  end
 end
