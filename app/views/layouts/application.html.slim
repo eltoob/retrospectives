@@ -56,13 +56,11 @@ html lang="en"
     .container-fluid
       - if notice.present? || alert.present?
         .row-fluid
-          .span12
+          p.span12.alert
             - if notice.present?
-              p(class="notice")
-                = notice
+              = notice
             - if alert.present?
-              p(class="alert")
-                = alert
+              = alert
 
       .row-fluid
         .span12
