@@ -4,6 +4,6 @@
     li.pull-right
       = render 'items/add', item: Item.build_sad
 
-  .items
+  .items(data-behavior='Sortable')
     - current_retro.sad_items.each do |item|
       = render 'items/item', item: item

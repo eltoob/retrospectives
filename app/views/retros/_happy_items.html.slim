@@ -7,6 +7,6 @@
     li.pull-right
       = render 'items/add', item: Item.build_happy
 
-  .items
+  .items(data-behavior='Sortable')
     - current_retro.happy_items.each do |item|
       = render 'items/item', item: item
