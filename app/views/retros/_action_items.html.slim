@@ -9,8 +9,20 @@
     - current_retro.action_items.each do |item|
       = render 'items/item', item: item
 
-  - if current_user.try(:can_submit_to_pivotal_tracker?)
-    = simple_form_for(current_retro, url: send_to_tracker_retro_path(current_retro), html: {'data-behavior' => 'AjaxForm'}) do |form|
-      .span12
-        = form.submit "Send to Pivotal Tracker", class: 'btn btn-inverse span10'
+  - if current_user
+    .span12
+      - if current_user.can_submit_to_pivotal_tracker?
+        = simple_form_for(current_retro, url: send_to_tracker_retro_path(current_retro), html: {'data-behavior' => 'AjaxForm'}) do |form|
+            = form.submit "Send to Pivotal Tracker", class: 'btn btn-inverse span10'
+      - else
+        = link_to "Configure Pivotal Tracker", dashboard_users_path, class: 'btn span10'
+
+  - else
+    .span12
+      br
+      p 
+        = link_to "Create an account", new_user_registration_path
+        |&nbsp; to add Pivotal Tracker integration. 
+      p Automatically add your action items to your product backlog.
+
 
