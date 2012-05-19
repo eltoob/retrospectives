@@ -1,4 +1,4 @@
 = simple_form_for(item, html: {'data-behavior' => 'AjaxForm', class: 'retro-item-form row-fluid'}) do |form|
-  = form.input(:description, input_html: { 'data-behavior' => "Keybindings",  class: 'retro-item span12', autocomplete: 'off'}, wrapper_html: {class: 'span10'})
+  = form.input(:description, input_html: { autofocus: autofocus?, 'data-behavior' => "Keybindings",  class: 'retro-item span12', autocomplete: 'off'}, wrapper_html: {class: 'span10'})
   = link_to("x", item_path(item), class: 'close remove-item span1', 'data-behavior' => 'RemoveItem')
 

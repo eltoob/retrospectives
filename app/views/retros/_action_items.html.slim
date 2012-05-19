@@ -1,0 +1,16 @@
+#action_items.swimming-lane.span4.hide
+  ul.nav.nav-tabs
+    li= link_to("Happy Items", "#", 'data-behavior' => "ShowHappyItems")
+    li.active= link_to("Action Items", "#")
+    li.pull-right
+      = render 'items/add', item: Item.build_action
+
+  .items
+    - current_retro.action_items.each do |item|
+      = render 'items/item', item: item
+
+  - if current_user.try(:can_submit_to_pivotal_tracker?)
+    = simple_form_for(current_retro, url: send_to_tracker_retro_path(current_retro), html: {'data-behavior' => 'AjaxForm'}) do |form|
+      .span12
+        = form.submit "Send to Pivotal Tracker", class: 'btn btn-inverse span10'
+

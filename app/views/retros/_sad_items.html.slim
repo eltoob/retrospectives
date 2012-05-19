@@ -1,0 +1,9 @@
+#bad.last.swimming-lane.span4.last
+  ul.nav.nav-tabs
+    li.active= link_to("Sad Items", "#")
+    li.pull-right
+      = render 'items/add', item: Item.build_sad
+
+  .items
+    - current_retro.sad_items.each do |item|
+      = render 'items/item', item: item

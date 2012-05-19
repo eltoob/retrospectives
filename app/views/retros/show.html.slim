@@ -1,48 +1,11 @@
 #workspace.row-fluid(data-behavior='Workspace Keybindings')
-  #happy.swimming-lane.span4
-    ul.nav.nav-tabs
-      li.active= link_to("Happy Items", "#")
-      li= link_to("Action Items", "#", 'data-behavior' => 'ShowActionItems')
-      li.pull-right
-        = render 'items/add', item: Item.build_happy
-
-    .items
-      - current_retro.happy_items.each do |item|
-        = render 'items/item', item: item
-
-  #meh.swimming-lane.span4
-    ul.nav.nav-tabs
-      li.active= link_to("Confused Items", "#")
-      li.pull-right
-        = render 'items/add', item: Item.build_meh
-
-    .items
-      - current_retro.meh_items.each do |item|
-        = render 'items/item', item: item
-
-  #bad.last.swimming-lane.span4.last
-    ul.nav.nav-tabs
-      li.active= link_to("Sad Items", "#")
-      li.pull-right
-        = render 'items/add', item: Item.build_sad
-
-    .items
-      - current_retro.sad_items.each do |item|
-        = render 'items/item', item: item
-
-  #action_items.swimming-lane.span4.hide
-    ul.nav.nav-tabs
-      li= link_to("Happy Items", "#", 'data-behavior' => "ShowHappyItems")
-      li.active= link_to("Action Items", "#")
-      li.pull-right
-        = render 'items/add', item: Item.build_action
-
-    .items
-      - current_retro.action_items.each do |item|
-        = render 'items/item', item: item
-
-    - if current_user.try(:can_submit_to_pivotal_tracker?)
-      = simple_form_for(current_retro, url: send_to_tracker_retro_path(current_retro), html: {'data-behavior' => 'AjaxForm'}) do |form|
-        .span12
-          = form.submit "Send to Pivotal Tracker", class: 'btn btn-inverse span10'
-
+  - if current_retro.over_half_time?
+    = render 'happy_items'
+  - else
+    = render 'action_items'
+  = render 'meh_items'
+  = render 'sad_items'
+  - if current_retro.over_half_time?
+    = render 'action_items'
+  - else
+    = render 'happy_items'

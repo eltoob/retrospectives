@@ -34,4 +34,8 @@ class Retro < ActiveRecord::Base
       item.id == item_id.to_i
     end
   end
+
+  def over_half_time?
+    (SECONDS_IN_ONE_HOUR / 2) < seconds_left
+  end
 end

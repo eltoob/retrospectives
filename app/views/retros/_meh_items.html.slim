@@ -1,0 +1,9 @@
+#meh.swimming-lane.span4
+  ul.nav.nav-tabs
+    li.active= link_to("Confused Items", "#")
+    li.pull-right
+      = render 'items/add', item: Item.build_meh
+
+  .items
+    - current_retro.meh_items.each do |item|
+      = render 'items/item', item: item

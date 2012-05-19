@@ -1,0 +1,12 @@
+#happy.swimming-lane.span4
+  ul.nav.nav-tabs
+    li.active
+      = link_to("Happy Items", "#")
+    li
+      = link_to("Action Items", "#", 'data-behavior' => 'ShowActionItems')
+    li.pull-right
+      = render 'items/add', item: Item.build_happy
+
+  .items
+    - current_retro.happy_items.each do |item|
+      = render 'items/item', item: item

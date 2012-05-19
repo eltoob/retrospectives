@@ -1,15 +1,16 @@
 class TrackerClient
   def initialize(api_token, project_id, text)
-    @api_token = api_token.to_s
-    @project_id = project_id.to_i
+    PivotalTracker::Client.token = api_token
+    PivotalTracker::Client.use_ssl = true
+
     @text = text
+    @project = PivotalTracker::Project.find(project_id.to_i)
   end
 
   def create_chore
-    PivotalTracker::Client.token = @api_token
-    project = PivotalTracker::Project.find(@project_id.to_i)
+    return if @text.blank?
 
-    story = project.stories.create(
+    story = @project.stories.create(
       name: @text,
       story_type: 'chore',
       labels: ['retro']
