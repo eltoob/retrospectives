@@ -42,6 +42,8 @@ class RetrosController < ApplicationController
   end
 
   def send_to_tracker
+    logger.debug current_user.inspect
+
     current_retro.unassigned_action_items.each do |action_item|
       action_item.send_to_tracker(current_user.pivotal_tracker_api_key, current_user.pivotal_tracker_project_id)
     end
