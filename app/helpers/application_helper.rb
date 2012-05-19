@@ -11,4 +11,12 @@ module ApplicationHelper
       return true
     end
   end
+
+  def action_items_class
+    'hide' if current_retro.over_half_time?
+  end
+
+  def happy_items_class
+    'hide' unless current_retro.over_half_time?
+  end
 end

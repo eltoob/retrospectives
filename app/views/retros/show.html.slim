@@ -3,8 +3,10 @@
     = render 'happy_items'
   - else
     = render 'action_items'
+
   = render 'meh_items'
   = render 'sad_items'
+
   - if current_retro.over_half_time?
     = render 'action_items'
   - else
