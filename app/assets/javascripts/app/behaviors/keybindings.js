@@ -12,9 +12,33 @@ Retrospective.Behaviors.Keybindings = function(item){
     }
   };
 
+  var upArrowPressed = function(){
+    var newItem = item.closest("form").prevAll(".retro-item-form:first")
+
+    if(newItem.length > 0) {
+      newItem.find(".retro-item").focus();
+    }
+  };
+
+  var downArrowPressed = function(){
+    var newItem = item.closest("form").nextAll(".retro-item-form:first")
+
+    if(newItem.length > 0) {
+      newItem.find(".retro-item").focus();
+    }
+  };
+
   item.keyup(function(event){
     if(event.which == ENTER){
       enterPressed();
+    }
+
+    if(event.which == UP_ARROW){
+      upArrowPressed();
+    }
+
+    if(event.which == DOWN_ARROW){
+      downArrowPressed();
     }
   });
 };
