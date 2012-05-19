@@ -30,6 +30,9 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
+  RSpec.configure do |config|
+    config.include Devise::TestHelpers, :type => :controller
+  end
 
   require 'remarkable/active_record'
 end

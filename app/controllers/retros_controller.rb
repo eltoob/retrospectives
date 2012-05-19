@@ -2,21 +2,21 @@ class RetrosController < ApplicationController
   before_filter do
     return unless params[:id]
 
-    retro = Retro.find_by_id(params[:id])
+    self.current_retro ||= Retro.find_by_id(params[:id])
 
-    if retro && retro.user
-      if user_signed_in? && current_user != retro.user
+    if current_retro && current_retro.user
+      if user_signed_in? && current_user != current_retro.user
+        self.current_retro = nil
         flash[:alert] = "That's not your retro."
         redirect_to root_path and return
       end
 
       unless user_signed_in?
+        self.current_retro = nil
         flash[:alert] = "That's not your retro."
         redirect_to root_path and return
       end
     end
-
-    self.current_retro = retro
   end
 
   def create

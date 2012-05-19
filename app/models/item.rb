@@ -31,14 +31,13 @@ class Item < ActiveRecord::Base
   end
 
   def send_to_tracker(api_token, project_id)
-    PivotalTracker::Client.token = api_token
-    project = PivotalTracker::Project.find(project_id)
+    story = TrackerClient.new(
+      api_token,
+      project_id,
+      description
+    ).create_chore
 
-    story ||= project.stories.create(name: description, story_type: 'chore')
-    story = if story
-    else
-      self.pivotal_tracker_story_id = story.id
-      self.save!
-    end
+    self.pivotal_tracker_story_id = story.id
+    self.save!
   end
 end

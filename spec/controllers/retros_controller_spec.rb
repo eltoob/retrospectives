@@ -1,12 +1,19 @@
 require 'spec_helper'
 
 describe RetrosController do
+  let(:current_user) { stub_model(User) }
+
+  before do
+    sign_in(current_user)
+  end
+
   describe "#create" do
     let(:retro) { stub_model(Retro) }
     let(:parameters) { Hash.new }
 
     before do
-      Retro.should_receive(:create).with(parameters) { retro }
+      retro
+      Retro.should_receive(:new).with(parameters) { retro }
     end
 
     it "redirects to the newly created retrospective" do
@@ -25,6 +32,7 @@ describe RetrosController do
     let(:parameters) { Hash.new }
 
     before do
+      retro
       @controller.current_retro = retro
       retro.should_receive(:update_attributes).with(parameters) { true }
     end
