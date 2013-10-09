@@ -16,7 +16,7 @@ class TrackerClient
       labels: ['retro']
     )
 
-    story.notes.create(:text => "Created by teamretrospective.com")
+    story.notes.create(:text => "Created by TeamRetro")
 
     story
   end
