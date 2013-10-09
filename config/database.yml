@@ -1,11 +1,12 @@
 development:
-  adapter: postgresql
-  username: 'aberlin'
-  database: 'retrospective_dev'
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
 
 test:
   adapter: postgresql
-  username: 'aberlin'
+  username: 'elietoubiana'
   database: 'retrospective_test'
 
 production:

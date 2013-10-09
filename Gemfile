@@ -4,12 +4,23 @@ source "https://rubygems.org"
 ruby "1.9.3"
 
 gem "rails"
-gem 'pg'
+group :production do
+  gem 'pg'
+end
+
+group :developement, :test do
+  gem 'sqlite3'
+end
+
 gem 'slim'
 gem 'simple_form'
-gem 'twitter-bootstrap-rails'
 gem 'heroku'
 gem 'jquery-rails'
+
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
 gem 'newrelic_rpm'
 gem 'devise'
 gem 'pivotal-tracker'

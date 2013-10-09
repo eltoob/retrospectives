@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(:version => 20120518045239) do
     t.string  "description"
     t.string  "category"
     t.integer "retro_id"
-    t.string  "pivotal_tracker_id"
     t.string  "pivotal_tracker_story_id"
   end
 
@@ -43,8 +42,6 @@ ActiveRecord::Schema.define(:version => 20120518045239) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
-    t.string   "tracker_api_token"
-    t.string   "tracker_project_id"
     t.string   "pivotal_tracker_project_id"
     t.string   "pivotal_tracker_api_key"
   end
